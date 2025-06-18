@@ -1,0 +1,6 @@
+packages:
+  # Island applications - each is a separate, buildable application
+  - "apps/*"
+
+  # Shared packages consumed by the islands
+  - "packages/*"
