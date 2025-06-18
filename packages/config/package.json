@@ -7,7 +7,8 @@
   "exports": {
     "./tsconfig": "./tsconfig.base.json",
     "./eslint": "./eslint-preset.js",
-    "./postcss": "./postcss.config.js"
+    "./postcss": "./postcss.config.js",
+    "./prettier": "./.prettierrc.js"
   },
   "files": [
     "*.json",
@@ -23,6 +24,7 @@
     "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0",
     "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.1.0",
     "typescript": "^5.3.0"
   }
 }

@@ -1,0 +1,27 @@
+# Browsers that we support for ChooseMyCar front-end
+# This configuration is used by Autoprefixer, PostCSS, and other tools
+
+# Production browsers - targeting modern browsers with good support
+> 1%
+last 2 versions
+Firefox ESR
+
+# Exclude legacy browsers that don't support modern JavaScript
+not IE <= 11
+not dead
+
+# Specific mobile browsers for automotive industry audience
+# (Many users browse car listings on mobile devices)
+iOS >= 12
+Android >= 7
+
+# Ensure good coverage for popular browsers in automotive market
+Chrome >= 88
+Firefox >= 85
+Safari >= 14
+Edge >= 88
+
+# Development browsers (optional, can be overridden)
+# last 1 Chrome version
+# last 1 Firefox version
+# last 1 Safari version
