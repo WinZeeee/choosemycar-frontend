@@ -1,19 +1,160 @@
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive System - Mobile-First Approach
+   ========================================================================== */
+
+:root {
+  /* Breakpoint Values */
+  --breakpoint-xs: 0;         /* Mobile devices */
+  --breakpoint-sm: 576px;     /* Small devices (landscape phones) */
+  --breakpoint-md: 768px;     /* Medium devices (tablets) */
+  --breakpoint-lg: 992px;     /* Large devices (desktops) */
+  --breakpoint-xl: 1200px;    /* Extra large devices (large desktops) */
+  --breakpoint-xxl: 1400px;   /* Extra extra large devices */
+
+  /* Container max-widths for each breakpoint */
+  --container-sm: 540px;
+  --container-md: 720px;
+  --container-lg: 960px;
+  --container-xl: 1140px;
+  --container-xxl: 1320px;
+}
+
+/* ==========================================================================
+   Mobile-First Responsive Mixins (via CSS custom properties)
    ========================================================================== */
 
 /*
-  Mobile-first breakpoints.
-  Usage:
-  @media (min-width: var(--breakpoint-md)) {
-    ...
-  }
+   Since CSS doesn't have true mixins, we use utility classes
+   and custom properties to achieve mobile-first responsive design
 */
 
-:root {
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1400px;
+/* Responsive Container */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+@media (min-width: var(--breakpoint-sm)) {
+  .container-responsive {
+    max-width: var(--container-sm);
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .container-responsive {
+    max-width: var(--container-md);
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .container-responsive {
+    max-width: var(--container-lg);
+  }
+}
+
+@media (min-width: var(--breakpoint-xl)) {
+  .container-responsive {
+    max-width: var(--container-xl);
+  }
+}
+
+@media (min-width: var(--breakpoint-xxl)) {
+  .container-responsive {
+    max-width: var(--container-xxl);
+  }
+}
+
+/* ==========================================================================
+   Responsive Display Utilities
+   ========================================================================== */
+
+/* Hide on mobile, show on larger screens */
+.hidden-xs { display: none; }
+@media (min-width: var(--breakpoint-sm)) { .hidden-xs { display: initial; } }
+
+/* Show only on mobile */
+.visible-xs-only { display: initial; }
+@media (min-width: var(--breakpoint-sm)) { .visible-xs-only { display: none; } }
+
+/* Hide on small devices */
+.hidden-sm { display: initial; }
+@media (min-width: var(--breakpoint-sm)) and (max-width: calc(var(--breakpoint-md) - 1px)) {
+  .hidden-sm { display: none; }
+}
+
+/* Hide on medium devices */
+.hidden-md { display: initial; }
+@media (min-width: var(--breakpoint-md)) and (max-width: calc(var(--breakpoint-lg) - 1px)) {
+  .hidden-md { display: none; }
+}
+
+/* Hide on large devices */
+.hidden-lg { display: initial; }
+@media (min-width: var(--breakpoint-lg)) and (max-width: calc(var(--breakpoint-xl) - 1px)) {
+  .hidden-lg { display: none; }
+}
+
+/* ==========================================================================
+   Responsive Typography Scale
+   ========================================================================== */
+
+/* Mobile-first responsive headings */
+.heading-responsive-1 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .heading-responsive-1 {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .heading-responsive-1 {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+.heading-responsive-2 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-snug);
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .heading-responsive-2 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .heading-responsive-2 {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+/* ==========================================================================
+   Responsive Spacing Utilities
+   ========================================================================== */
+
+/* Responsive padding */
+.padding-responsive {
+  padding: var(--space-4);
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .padding-responsive {
+    padding: var(--space-6);
+  }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .padding-responsive {
+    padding: var(--space-8);
+  }
 }

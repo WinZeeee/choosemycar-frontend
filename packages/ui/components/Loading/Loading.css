@@ -1,0 +1,144 @@
+/* Loading Component Styles */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.loading--fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: var(--z-index-modal);
+}
+
+.loading__text {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+  text-align: center;
+}
+
+/* Base indicator styles */
+.loading__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinner variant */
+.loading__indicator--spinner {
+  border: 2px solid var(--color-border);
+  border-top: 2px solid var(--color-primary);
+  border-radius: 50%;
+  animation: loading-spin 1s linear infinite;
+}
+
+.loading__indicator--spinner.loading__indicator--sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.loading__indicator--spinner.loading__indicator--md {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.loading__indicator--spinner.loading__indicator--lg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Dots variant */
+.loading__indicator--dots {
+  gap: var(--space-xs);
+}
+
+.loading__indicator--dots div {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  animation: loading-dots 1.4s ease-in-out infinite both;
+}
+
+.loading__indicator--dots.loading__indicator--sm div {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.loading__indicator--dots.loading__indicator--md div {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.loading__indicator--dots.loading__indicator--lg div {
+  width: 1rem;
+  height: 1rem;
+}
+
+.loading__indicator--dots div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading__indicator--dots div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* Pulse variant */
+.loading__indicator--pulse div {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+.loading__indicator--pulse.loading__indicator--sm div {
+  width: 1rem;
+  height: 1rem;
+}
+
+.loading__indicator--pulse.loading__indicator--md div {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.loading__indicator--pulse.loading__indicator--lg div {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Animations */
+@keyframes loading-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-dots {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading-pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

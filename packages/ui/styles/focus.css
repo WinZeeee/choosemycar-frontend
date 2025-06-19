@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Focus States & Accessibility
+   ========================================================================== */
+
+/* ==========================================================================
+   Global Focus Ring System
+   ========================================================================== */
+
+/*
+   Remove default browser focus styles and replace with custom focus rings
+   that meet WCAG AA requirements (3:1 contrast ratio minimum)
+*/
+*:focus {
+  outline: none;
+}
+
+/*
+   Custom focus ring for interactive elements
+   Uses a prominent blue color with sufficient contrast
+*/
+.focus-ring,
+*:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ==========================================================================
+   Component-Specific Focus Styles
+   ========================================================================== */
+
+/* Button Focus States */
+button:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(134, 183, 254, 0.2);
+}
+
+/* Primary button focus */
+.button--primary:focus-visible {
+  outline-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(214, 132, 0, 0.2);
+}
+
+/* Danger button focus */
+.button--danger:focus-visible {
+  outline-color: var(--color-error);
+  box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.2);
+}
+
+/* Input Focus States */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.input:focus-visible {
+  border-color: var(--color-border-focus);
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 0;
+  box-shadow: 0 0 0 3px rgba(134, 183, 254, 0.2);
+}
+
+/* Input error state focus */
+.input--error:focus-visible {
+  border-color: var(--color-error);
+  outline-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+/* Input success state focus */
+.input--success:focus-visible {
+  border-color: var(--color-success);
+  outline-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.2);
+}
+
+/* Link Focus States */
+a:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: underline;
+}
+
+/* Card Focus States (for clickable cards) */
+.card--clickable:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Focus Management */
+.modal:focus-visible {
+  outline: none; /* Modal container shouldn't show focus ring */
+}
+
+.modal__close:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-full);
+}
+
+/* ==========================================================================
+   Skip Link for Keyboard Navigation
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-text);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  z-index: var(--z-index-modal);
+  font-weight: var(--font-weight-semibold);
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid var(--color-text-inverse);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+/*
+   Support for Windows High Contrast Mode and other accessibility tools
+*/
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+
+  button:focus-visible,
+  .button:focus-visible {
+    outline-width: 3px;
+    box-shadow: 0 0 0 6px rgba(134, 183, 254, 0.3);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  .input:focus-visible {
+    border-width: 3px;
+    outline-width: 3px;
+    box-shadow: 0 0 0 5px rgba(134, 183, 254, 0.3);
+  }
+}
+
+/* ==========================================================================
+   Focus Within States (for compound components)
+   ========================================================================== */
+
+/*
+   Focus-within styles for components that contain focusable elements
+*/
+.search-container:focus-within {
+  box-shadow: 0 0 0 3px rgba(134, 183, 254, 0.2);
+  border-radius: var(--border-radius);
+}
+
+.form-group:focus-within .form-label {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+
+/*
+   Respect user's motion preferences for focus transitions
+*/
+@media (prefers-reduced-motion: reduce) {
+  *:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  a:focus-visible {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Focus Trap Utilities
+   ========================================================================== */
+
+/*
+   Utility class to hide content from screen readers when focus is trapped
+   (e.g., when a modal is open)
+*/
+.focus-trap-active {
+  overflow: hidden;
+}
+
+.focus-trap-active > *:not(.modal):not(.focus-trap-ignore) {
+  visibility: hidden;
+}
+
+/* ==========================================================================
+   Keyboard Navigation Indicators
+   ========================================================================== */
+
+/*
+   Visual indicators for keyboard-only users
+*/
+.keyboard-navigation button:focus,
+.keyboard-navigation a:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation select:focus,
+.keyboard-navigation textarea:focus {
+  box-shadow: 0 0 0 3px var(--color-border-focus);
+}
+
+/* Hide focus indicators for mouse users */
+.mouse-navigation *:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   ARIA Live Region Styling
+   ========================================================================== */
+
+/*
+   Ensure live regions are properly styled but not visually intrusive
+*/
+[aria-live] {
+  position: relative;
+}
+
+.screen-reader-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
