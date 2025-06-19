@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Design Tokens: CSS Variables
+   ========================================================================== */
+
+:root {
+  /* ------------------------------
+   * Colors
+   * ------------------------------ */
+  --color-primary: #005f73;
+  --color-primary-dark: #003e4d;
+  --color-secondary: #0a9396;
+  --color-accent: #ee9b00;
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-border: #dee2e6;
+  --color-success: #2a9d8f;
+  --color-warning: #f4a261;
+  --color-error: #e76f51;
+
+  /* ------------------------------
+   * Typography
+   * ------------------------------ */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-family-serif: "Georgia", "Times New Roman", serif;
+  --font-family-mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas",
+    "Liberation Mono", "Courier New", monospace;
+
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;    /* 16px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem;  /* 24px */
+  --font-size-xxl: 2rem;   /* 32px */
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.5;
+
+  /* ------------------------------
+   * Spacing
+   * ------------------------------ */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem;  /* 8px */
+  --space-md: 1rem;    /* 16px */
+  --space-lg: 1.5rem;  /* 24px */
+  --space-xl: 2rem;    /* 32px */
+  --space-xxl: 3rem;   /* 48px */
+
+  /* ------------------------------
+   * Borders
+   * ------------------------------ */
+  --border-radius-sm: 0.2rem;
+  --border-radius-md: 0.3rem;
+  --border-radius-lg: 0.5rem;
+  --border-width: 1px;
+
+  /* ------------------------------
+   * Z-Index
+   * ------------------------------ */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* ------------------------------
+   * Transitions
+   * ------------------------------ */
+  --transition-base: all 0.2s ease-in-out;
+}
